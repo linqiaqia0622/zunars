@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zunars.www.zunars">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data android:name="com.amap.api.v2.apikey" android:value="d3a385d958efb9aac58a7e0d88b32f12" />
+        <meta-data android:value="570e01b8e0f55a1d99001b05" android:name="UMENG_APPKEY"></meta-data>
+        <meta-data android:value="ZUNARS_COM" android:name="UMENG_CHANNEL"/>
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SplashActivity" />
+        <activity android:name=".GuideActivity" />
+        <activity
+            android:name=".RoomListActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".RoomDetailActivity">
+
+        </activity>
+        <activity android:name=".RoomReservationActivity" />
+        <activity android:name=".MessageActivity" />
+        <activity android:name=".LoginActivity">
+
+        </activity>
+        <activity android:name=".RegisterActivity"></activity>
+    </application>
+
+</manifest>

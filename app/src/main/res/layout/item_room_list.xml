@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="100dp"
+        android:src="@drawable/test"
+        android:layout_height="92dp" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/title"
+            android:layout_marginTop="9dp"
+            android:layout_alignParentTop="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/sub_title"
+            android:textSize="12sp"
+            android:textIsSelectable="true"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/price"
+            android:textColor="@color/colorRed"
+            android:layout_toRightOf="@+id/image_view"
+            android:layout_toEndOf="@+id/image_view"
+            android:layout_marginTop="9dp" />
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

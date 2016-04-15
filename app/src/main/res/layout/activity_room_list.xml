@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.zunars.www.zunars.RoomListActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:minHeight="48dp"
+            android:background="?attr/colorPrimary"
+            theme="@style/AppTheme">
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@color/colorGreen"
+                android:layout_width="fill_parent"
+                android:layout_height="48dp">
+
+                <TextView
+                    android:id="@+id/back_btn"
+                    android:text="@string/back_btn"
+                    android:layout_width="wrap_content"
+                    android:paddingLeft="16dp"
+                    android:gravity="center_vertical"
+                    android:background="@android:color/transparent"
+                    android:textColor="@android:color/white"
+                    android:layout_height="fill_parent" />
+
+                <TextView
+                    android:text="@string/action_sign_in"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:textSize="16sp"
+                    android:layout_centerInParent="true"
+                    android:gravity="center_vertical"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/switch_show_type_btn"
+                    android:textColor="@android:color/white"
+                    android:background="@android:color/transparent"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/action_sign_up"
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:clickable="true"
+                    android:paddingRight="16dp"
+                    android:layout_height="fill_parent" />
+            </RelativeLayout>
+
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:text="区域"
+            android:background="@android:color/white"
+            android:layout_width="wrap_content"
+            android:drawableRight="@mipmap/caret_down"
+            android:layout_height="wrap_content"
+            android:textColor="#666"
+            android:textSize="12sp"
+            android:layout_weight="1" />
+        <Button
+            android:text="区域"
+            android:background="@android:color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#666"
+            android:textSize="12sp"
+            android:layout_weight="1" />
+        <Button
+            android:text="区域"
+            android:background="@android:color/white"
+            android:textColor="#666"
+            android:textSize="12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+        <Button
+            android:text="区域"
+            android:background="@android:color/white"
+            android:layout_width="wrap_content"
+            android:textColor="#666"
+            android:textSize="12sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/room_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </ListView>
+
+
+</LinearLayout>
