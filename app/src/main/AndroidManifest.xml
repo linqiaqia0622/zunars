@@ -20,31 +20,36 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data android:name="com.amap.api.v2.apikey" android:value="d3a385d958efb9aac58a7e0d88b32f12" />
-        <meta-data android:value="570e01b8e0f55a1d99001b05" android:name="UMENG_APPKEY"></meta-data>
-        <meta-data android:value="ZUNARS_COM" android:name="UMENG_CHANNEL"/>
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="d3a385d958efb9aac58a7e0d88b32f12" />
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="570e01b8e0f55a1d99001b05" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="ZUNARS_COM" />
 
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".SplashActivity" />
         <activity android:name=".GuideActivity" />
         <activity
             android:name=".RoomListActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".RoomDetailActivity">
-
-        </activity>
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".RoomDetailActivity"></activity>
         <activity android:name=".RoomReservationActivity" />
         <activity android:name=".MessageActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".RegisterActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity"></activity>
     </application>
 
 </manifest>
