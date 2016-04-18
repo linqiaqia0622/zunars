@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,15 +18,24 @@ import android.view.MenuItem;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 import com.zunars.www.adapter.SectionsPagerAdapter;
 import com.zunars.www.fragment.FavoriteFragment;
 import com.zunars.www.fragment.HomeFragment;
 import com.zunars.www.fragment.MessageFragment;
 import com.zunars.www.fragment.ReservationFragment;
 import com.zunars.www.fragment.UserFragment;
+import com.zunars.www.net.core.ApiHttp;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Exchanger;
+
+import butterknife.BindString;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -33,18 +43,38 @@ public class MainActivity extends AppCompatActivity
     private String mTextviewArray[] = {"首页", "消息", "好友", "广场", "更多"};
     BottomNavigationBar bottomNavigationBar;
     ViewPager mViewPager;
+    @BindString(R.string.action_settings)
+    public String miao;
     //定义数组来存放按钮图片
     private int mImageViewArray[] = {R.drawable.home, R.drawable.home, R.drawable.home,
             R.drawable.home, R.drawable.home};
 private SectionsPagerAdapter mSectionsPagerAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        try{
+            
+       
+        ApiHttp.getRoomList(this, new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                Log.i("miao","  onfailure request"+request.toString());
+                Log.i("miao","  onfailure e"+e.toString());
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+                Log.i("miao","  onfailure onResponse"+response.body().string());
+
+            }
+        }); }catch (Exception e){
+            
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        
-
+        ButterKnife.bind(this);
+        Log.i("miao","dd"+miao);
         mViewPager=(ViewPager)findViewById(R.id.container);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
