@@ -28,6 +28,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="no_data">没有找到符合条件的房源</string>
+
 
     <!--房源列表-->
 </resources>

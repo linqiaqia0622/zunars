@@ -29,7 +29,8 @@ import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.nostra13.universalimageloader.utils.StorageUtils;
-import com.zunars.www.model.RoomListItem;
+
+import com.zunars.www.net.bean.RoomListItem;
 import com.zunars.www.zunars.R;
 import com.zunars.www.zunars.RoomDetailActivity;
 import com.zunars.www.zunars.RoomListActivity;
@@ -54,7 +55,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class RoomListAdapter extends BaseAdapter {
 
     private Context context;
-    private ArrayList<RoomListItem> data;
+    private List<RoomListItem> data;
     DisplayImageOptions options;
 
     //viewholder优化
@@ -68,7 +69,7 @@ public class RoomListAdapter extends BaseAdapter {
     }
 
     //实例化
-    public RoomListAdapter(Context context, ArrayList<RoomListItem> roomList) {
+    public RoomListAdapter(Context context, List<RoomListItem> roomList) {
         this.context = context;
         this.data = roomList;
 
@@ -141,13 +142,13 @@ public class RoomListAdapter extends BaseAdapter {
         }
 
         RoomListItem item = (RoomListItem) getItem(position);
+//
+//        holder.title.setText(item.districtName + " · " + item.areaName + " · " + item.roomName);
+//        holder.subTitle.setText(item.communityName + " · " + item.rentType + " · " + item.square + "㎡");
+//        holder.price.setText(item.price + "");
+//        holder.roomId = item.roomId + "";
 
-        holder.title.setText(item.districtName + " · " + item.areaName + " · " + item.roomName);
-        holder.subTitle.setText(item.communityName + " · " + item.rentType + " · " + item.square + "㎡");
-        holder.price.setText(item.price + "");
-        holder.roomId = item.roomId + "";
-
-        ImageLoader.getInstance().displayImage(item.image, holder.image, options);
+      //  ImageLoader.getInstance().displayImage(item.image, holder.image, options);
 
         //设置列表点击事件，单击跳转到房源详情页面
         holder.layout.setOnClickListener(new View.OnClickListener() {
@@ -156,7 +157,7 @@ public class RoomListAdapter extends BaseAdapter {
                 Intent intent = new Intent();
                 intent.setClass(context, RoomDetailActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("room_id",  ((RoomListItem) getItem(position)).roomId + "");     //传递房源ID
+            //    bundle.putString("room_id",  ((RoomListItem) getItem(position)).roomId + "");     //传递房源ID
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }

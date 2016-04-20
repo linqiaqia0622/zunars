@@ -15,6 +15,7 @@ import java.io.File;
  * Created by 洽洽 on 2016/4/18.
  */
 public class contextNet extends Application {
+    public static final int PAGE_SIZE = 20;//默认分页大小
     private String saveImagePath;//保存图片路径
     /**
      * 检测网络是否可用

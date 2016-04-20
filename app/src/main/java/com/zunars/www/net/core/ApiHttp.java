@@ -81,13 +81,14 @@ public class ApiHttp {
     /**
      * 获取帖子列表
      * @param context
-     * @param catalog
-     * @param pageIndex
+    // * @param 
+    // * @param 
      * @return
      * @throws AppException
      */
     public static void getRoomList(Context context ,Callback callback) throws AppException {
         String newUrl = _MakeURL(URLs.ROOM_LIST, new HashMap<String, Object>());
+        Log.i("miao","Api http+ getRoomlist");
         getHttpClient(context,newUrl,callback);
     }
     private static Request getRequest(String url) {

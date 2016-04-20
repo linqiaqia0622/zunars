@@ -18,6 +18,7 @@ import android.view.MenuItem;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.google.gson.Gson;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -27,6 +28,8 @@ import com.zunars.www.fragment.HomeFragment;
 import com.zunars.www.fragment.MessageFragment;
 import com.zunars.www.fragment.ReservationFragment;
 import com.zunars.www.fragment.UserFragment;
+import com.zunars.www.model.RoomListItem;
+import com.zunars.www.net.bean.RoomItemList;
 import com.zunars.www.net.core.ApiHttp;
 
 import java.io.IOException;
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity
     private String mTextviewArray[] = {"首页", "消息", "好友", "广场", "更多"};
     BottomNavigationBar bottomNavigationBar;
     ViewPager mViewPager;
+    String res=null;
     @BindString(R.string.action_settings)
     public String miao;
     //定义数组来存放按钮图片
@@ -63,8 +67,16 @@ private SectionsPagerAdapter mSectionsPagerAdapter;
 
             @Override
             public void onResponse(Response response) throws IOException {
-                Log.i("miao","  onfailure onResponse"+response.body().string());
-
+              
+                Log.i("miao","   onResponse"+res);
+             res=response.body().string();
+                   
+              
+                Gson gson = new Gson(); 
+                Log.i("miao","Gson");
+                RoomItemList d = RoomItemList.parse(res);
+              //  Log.i("miao",((RoomListItem)d.getRoomList().get(1)).getArea_name());
+            
             }
         }); }catch (Exception e){
             
@@ -84,7 +96,7 @@ private SectionsPagerAdapter mSectionsPagerAdapter;
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        List<Fragment> lf = new ArrayList<>();
+            List<Fragment> lf = new ArrayList<>();
         // lf.add( new view1_fragment());
         lf.add( new HomeFragment());
         lf.add( new MessageFragment());

@@ -63,46 +63,47 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <Button
-            android:text="区域"
-            android:background="@android:color/white"
-            android:layout_width="wrap_content"
-            android:drawableRight="@mipmap/caret_down"
-            android:layout_height="wrap_content"
-            android:textColor="#666"
-            android:textSize="12sp"
-            android:layout_weight="1" />
-        <Button
-            android:text="区域"
-            android:background="@android:color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#666"
-            android:textSize="12sp"
-            android:layout_weight="1" />
-        <Button
-            android:text="区域"
-            android:background="@android:color/white"
+        <com.zunars.www.expand_tab.ExpandTabView
+            android:id="@+id/tab_area"
+            android:background="@color/white"
             android:textColor="#666"
             android:textSize="12sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
-        <Button
-            android:text="区域"
-            android:background="@android:color/white"
-            android:layout_width="wrap_content"
+        <com.zunars.www.expand_tab.ExpandTabView
+            android:id="@+id/tab_price"
+            android:background="@color/white"
             android:textColor="#666"
             android:textSize="12sp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
+        <com.zunars.www.expand_tab.ExpandTabView
+            android:id="@+id/tab_type"
+            android:background="@color/white"
+            android:textColor="#666"
+            android:textSize="12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+        <com.zunars.www.expand_tab.ExpandTabView
+            android:id="@+id/tab_choice"
+            android:background="@color/white"
+            android:textColor="#666"
+            android:textSize="12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+       
+        
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/room_list_view"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/room_list_view_pager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </ListView>
+    </android.support.v4.view.ViewPager>
 
 
 </LinearLayout>

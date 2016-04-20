@@ -35,22 +35,23 @@
         <activity android:name=".GuideActivity" />
         <activity
             android:name=".RoomListActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">  </activity>
         <activity android:name=".RoomDetailActivity"></activity>
-        <activity android:name=".RoomReservationActivity" />
+        <activity android:name=".RoomReservationActivity" >
+       </activity>
         <activity android:name=".MessageActivity" />
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".RegisterActivity" />
         <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme">
+        android:name="com.zunars.www.widget.textActivity"
+        android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+    </activity>
     </application>
+   
 
 </manifest>
