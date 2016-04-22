@@ -5,13 +5,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zunars.www.base.BaseItemFragment;
 import com.zunars.www.net.bean.RoomListItem;
-import com.zunars.www.net.bean.RoomListPage;
 import com.zunars.www.util.BitmapManager;
 import com.zunars.www.util.StringUtils;
 import com.zunars.www.zunars.R;
@@ -19,13 +19,16 @@ import com.zunars.www.zunars.Zunars;
 
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link } and makes a call to the
  * 
  * TODO: Replace the implementation with code for your data type.
  */
-public class RoomListRecyclerViewAdapter extends RecyclerView.Adapter<RoomListRecyclerViewAdapter.ViewHolder> {
+public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerViewAdapter.ViewHolder> {
     private static final int TYPE_ITEM = 0;
     private static final int TYPE_FOOTER = 1; 
     private final List<RoomListItem> mValues;
@@ -42,7 +45,7 @@ Zunars context;
     }
 
     
-    public RoomListRecyclerViewAdapter(Zunars context, List<RoomListItem> commentList, BaseItemFragment.OnListFragmentInteractionListener listener) {
+    public MainRecyclerViewAdapter(Zunars context, List<RoomListItem> commentList, BaseItemFragment.OnListFragmentInteractionListener listener) {
         bmpManager=new BitmapManager();
         mValues = commentList;
         mListener = listener;
@@ -101,7 +104,7 @@ Zunars context;
         // type == TYPE_FOOTER 返回footerView  
         else if (viewType == TYPE_FOOTER) {
             View view = LayoutInflater.from(parent.getContext()).inflate(
-                    R.layout.listview_footer, null);
+                    R.layout.main_head, null);
             view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT,
                     RecyclerView.LayoutParams.WRAP_CONTENT));
             return  new Footer(view);
@@ -147,26 +150,27 @@ Zunars context;
             return TYPE_ITEM;
         }
     }
-    public class Footer extends RoomListRecyclerViewAdapter.ViewHolder {
+    public class Footer extends MainRecyclerViewAdapter.ViewHolder {
         public final View mView;
-        public final TextView  title;
-        public final View  flag;
-        
-    
+//        public final TextView  title;
+//        public final View  flag;
+        @Bind(R.id.area_button)
+        Button button;
+
 
         public Footer(View view) {
             super(view);
             mView = view;
-            title=(TextView)mView.findViewById(R.id.listview_foot_more);
-            flag=mView.findViewById(R.id.listview_foot_progress);
-            mView.setOnClickListener(footerListener);
-        
+            ButterKnife.bind(this,view);
+//            title=(TextView)mView.findViewById(R.id.listview_foot_more);
+//            flag=mView.findViewById(R.id.listview_foot_progress);
+            //  mView.setOnClickListener(footerListener);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i("miao","onbindclick");
+                }
+            });
         }
-
-        @Override
-        public String toString() {
-            return "im footer"+ super.toString() + " '" +title.getText()+ "'";
-        }
-    }
     
-}
+}}

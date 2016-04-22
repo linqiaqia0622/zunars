@@ -20,19 +20,19 @@ import com.google.gson.Gson;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
-import com.zunars.www.model.RoomItem;
-import com.zunars.www.model.RoomListItem;
+
 import com.zunars.www.net.bean.Entity;
 import com.zunars.www.net.bean.MessageData;
-import com.zunars.www.net.bean.RoomItemList;
+
 import com.zunars.www.net.bean.interfaces.PageList;
 import com.zunars.www.zunars.R;
 import com.zunars.www.zunars.Zunars;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -44,7 +44,7 @@ import java.util.List;
 public abstract class BaseItemFragment< Data extends Entity, Result extends PageList<Data>>
         extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener
         {
-
+public Map<String ,Object> params;
     //没有状态
     public static final int LISTVIEW_ACTION_NONE = -1;
     //更新状态，不显示toast
@@ -66,14 +66,14 @@ public abstract class BaseItemFragment< Data extends Entity, Result extends Page
     //UI状态
     private int mListViewAction = LISTVIEW_ACTION_NONE;
     protected SwipeRefreshLayout mSwipeRefreshLayout;
-            Zunars mappliction;
+       public     Zunars mApplication;
     RecyclerView recyclerView;
             private RecyclerView.Adapter mAdapter;
    // private TextView mFooterTextView;
     public Result pageList;
             public MessageData<Result> messageData;
             public List<Data> mList=new ArrayList<>();
-    private View mHeaderView;
+   
             protected ProgressBar listProgressBar;
             
     private View mFooterView;//private View mFooterProgressBar;
@@ -134,8 +134,8 @@ public abstract class BaseItemFragment< Data extends Entity, Result extends Page
         @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-     
-        mappliction=getZunars();
+            params=new HashMap<>();
+        mApplication=getZunars();
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
             
@@ -143,9 +143,9 @@ public abstract class BaseItemFragment< Data extends Entity, Result extends Page
     }
     @Override
     public void onRefresh() {
-        mListViewAction=LISTVIEW_ACTION_REFRESH;
-        Log.i("chinamiao","onredlkfdlkf");
-        newLoadList(0, LISTVIEW_ACTION_REFRESH);
+//        mListViewAction=LISTVIEW_ACTION_REFRESH;
+//        Log.i("chinamiao","onredlkfdlkf");
+//        newLoadList(0, LISTVIEW_ACTION_REFRESH);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -179,6 +179,7 @@ public abstract class BaseItemFragment< Data extends Entity, Result extends Page
         Log.i("chinamiao","onViewCreated"+view.toString());
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) view;
+        mSwipeRefreshLayout.setEnabled(false);
         listProgressBar = (ProgressBar)view.findViewById(R.id.list_progress);
        // mListView = (ListView)view.findViewById(R.id.fragment_listview);
 
@@ -231,7 +232,7 @@ public abstract class BaseItemFragment< Data extends Entity, Result extends Page
            
             reflash = false;
         } 
-       loadList( page,reflash,getCallback());
+       loadList( new HashMap<String, Object>(),getCallback());
 
    return  ;}
    
@@ -277,7 +278,7 @@ public abstract class BaseItemFragment< Data extends Entity, Result extends Page
 
                       Gson gson = new Gson();
                       Log.i("miao","Gson");
-                      pageList=(Result) RoomItemList.parse(responseBody);
+                      pageList=(Result) parse(responseBody);
                 //    pageList=(Result) RoomListItem.parse(new ByteArrayInputStream(responseBody.getBytes()));
 
                       Log.i("chinamiao","dfdfd"+pageList.getList().get(0).toString());}
@@ -332,16 +333,16 @@ public abstract class BaseItemFragment< Data extends Entity, Result extends Page
                             if(mListViewAction == LISTVIEW_ACTION_REFRESH) {
                                 Log.i("miao","LISTVIEW_ACTION_REFRESH");
                                 mSumData=pageList.getPageSize();
-                                Log.d("chinamiao","reflash=true");
+                            
                                 Log.i("miao","Gson");
                                 if(mList.containsAll(pageList.getList())){
                                     Log.i("chinamiao","     已经是最新内容了");
-                                    Log.i("miao","已经是最新内容了");
+                                  
                                     Toast.makeText(getContext(),"已经是最新内容了",Toast.LENGTH_SHORT).show();
                                 }
                                     setSwipeRefreshLoadedState();
                                     mList.clear();
-                                Log.i("miao","已经是最新内容了");
+                               
                                     mList.addAll(pageList.getList());
                                 
                             }
@@ -444,12 +445,12 @@ public abstract class BaseItemFragment< Data extends Entity, Result extends Page
     }/** 加载下一页*/
     protected void onLoadNextPage() {
         // 当前pageIndex
-       int pageIndex = 40 / mappliction.PAGE_SIZE;
+       int pageIndex = 40 / mApplication.PAGE_SIZE;
         
        newLoadList(pageIndex, LISTVIEW_ACTION_SCROLL);
     }
     
     public abstract RecyclerView.Adapter getAdapter(List<Data> list, OnListFragmentInteractionListener no) ;
-    public abstract void loadList( int pageIndex, boolean isRefresh, Callback callback);
-          
+    public abstract void loadList(Map<String,Object> map, Callback callback);
+      public abstract PageList parse(String  response);    
 }

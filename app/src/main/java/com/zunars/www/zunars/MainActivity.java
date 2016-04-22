@@ -23,12 +23,14 @@ import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 import com.zunars.www.adapter.SectionsPagerAdapter;
+import com.zunars.www.base.BaseItemFragment;
 import com.zunars.www.fragment.FavoriteFragment;
 import com.zunars.www.fragment.HomeFragment;
 import com.zunars.www.fragment.MessageFragment;
 import com.zunars.www.fragment.ReservationFragment;
 import com.zunars.www.fragment.UserFragment;
 import com.zunars.www.model.RoomListItem;
+import com.zunars.www.net.bean.Entity;
 import com.zunars.www.net.bean.RoomItemList;
 import com.zunars.www.net.core.ApiHttp;
 
@@ -40,8 +42,8 @@ import java.util.concurrent.Exchanger;
 import butterknife.BindString;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements BaseItemFragment.OnListFragmentInteractionListener
+       , NavigationView.OnNavigationItemSelectedListener {
     //Tab选项卡的文字
     private String mTextviewArray[] = {"首页", "消息", "好友", "广场", "更多"};
     BottomNavigationBar bottomNavigationBar;
@@ -55,32 +57,32 @@ public class MainActivity extends AppCompatActivity
 private SectionsPagerAdapter mSectionsPagerAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        try{
+     //   try{
             
-       
-        ApiHttp.getRoomList(this, new Callback() {
-            @Override
-            public void onFailure(Request request, IOException e) {
-                Log.i("miao","  onfailure request"+request.toString());
-                Log.i("miao","  onfailure e"+e.toString());
-            }
-
-            @Override
-            public void onResponse(Response response) throws IOException {
-              
-                Log.i("miao","   onResponse"+res);
-             res=response.body().string();
-                   
-              
-                Gson gson = new Gson(); 
-                Log.i("miao","Gson");
-                RoomItemList d = RoomItemList.parse(res);
-              //  Log.i("miao",((RoomListItem)d.getRoomList().get(1)).getArea_name());
-            
-            }
-        }); }catch (Exception e){
-            
-        }
+//       
+//        ApiHttp.getRoomList(this, new Callback() {
+//            @Override
+//            public void onFailure(Request request, IOException e) {
+//                Log.i("miao","  onfailure request"+request.toString());
+//                Log.i("miao","  onfailure e"+e.toString());
+//            }
+//
+//            @Override
+//            public void onResponse(Response response) throws IOException {
+//              
+//                Log.i("miao","   onResponse"+res);
+//             res=response.body().string();
+//                   
+//              
+//                Gson gson = new Gson(); 
+//                Log.i("miao","Gson");
+//                RoomItemList d = RoomItemList.parse(res);
+//              //  Log.i("miao",((RoomListItem)d.getRoomList().get(1)).getArea_name());
+//            
+//            }
+//        }); }catch (Exception e){
+//            
+//        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -212,5 +214,10 @@ private SectionsPagerAdapter mSectionsPagerAdapter;
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onListFragmentInteraction(Entity item) {
+        
     }
 }

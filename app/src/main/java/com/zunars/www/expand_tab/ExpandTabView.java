@@ -51,6 +51,7 @@ public class ExpandTabView extends LinearLayout implements OnDismissListener {
 	public void setTitle(String valueText, int position) {
 		if (position < mToggleButton.size()) {
 			mToggleButton.get(position).setText(valueText);
+		//	mToggleButton.get(position).setHighlightColor(getContext().getResources().getColor(R.color.no_color));
 		}
 	}
 
@@ -98,7 +99,7 @@ public class ExpandTabView extends LinearLayout implements OnDismissListener {
 			mToggleButton.add(tButton);
 			tButton.setTag(i);
 			tButton.setText(mTextArray.get(i));
-
+		
 			r.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {

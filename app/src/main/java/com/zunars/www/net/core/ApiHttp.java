@@ -17,6 +17,7 @@ import com.zunars.www.net.bean.URLs;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Created by 洽洽 on 2016/1/17.
@@ -86,8 +87,8 @@ public class ApiHttp {
      * @return
      * @throws AppException
      */
-    public static void getRoomList(Context context ,Callback callback) throws AppException {
-        String newUrl = _MakeURL(URLs.ROOM_LIST, new HashMap<String, Object>());
+    public static void getRoomList(Context context , Map<String, Object> params, Callback callback) throws AppException {
+        String newUrl = _MakeURL(URLs.ROOM_LIST, params);
         Log.i("miao","Api http+ getRoomlist");
         getHttpClient(context,newUrl,callback);
     }

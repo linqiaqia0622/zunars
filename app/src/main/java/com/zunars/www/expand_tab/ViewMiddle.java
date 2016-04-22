@@ -3,7 +3,8 @@ package com.zunars.www.expand_tab;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Region;
 import android.util.AttributeSet;
@@ -21,10 +22,12 @@ public class ViewMiddle extends LinearLayout implements ViewBaseAction {
 	
 	private ListView regionListView;
 	private ListView plateListView;
+	private ListView plateListView2;
 	private ArrayList<String> groups = new ArrayList<String>();
 	private LinkedList<String> childrenItem = new LinkedList<String>();
 	private SparseArray<LinkedList<String>> children = new SparseArray<LinkedList<String>>();
 	private TextAdapter plateListViewAdapter;
+	private TextAdapter plateListViewAdapter2;
 	private TextAdapter earaListViewAdapter;
 	private OnSelectListener mOnSelectListener;
 	private int tEaraPosition = 0;
@@ -72,6 +75,7 @@ public class ViewMiddle extends LinearLayout implements ViewBaseAction {
 		inflater.inflate(R.layout.view_region, this, true);
 		regionListView = (ListView) findViewById(R.id.listView);
 		plateListView = (ListView) findViewById(R.id.listView2);
+		plateListView2 = (ListView) findViewById(R.id.listView3);
 		setBackgroundDrawable(getResources().getDrawable(
 				R.drawable.choosearea_bg_left));
 
@@ -97,12 +101,29 @@ public class ViewMiddle extends LinearLayout implements ViewBaseAction {
 
 					@Override
 					public void onItemClick(View view, int position) {
+						ObjectAnimator anim = ObjectAnimator//  
+								.ofFloat(plateListView2, "zhy", 0.0F,  1.0F)//  
+								.setDuration(500);//  
+						anim.start();
+						plateListView2.setVisibility(View.VISIBLE);
+//						anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+//						{
+//							@Override
+//							public void onAnimationUpdate(ValueAnimator animation)
+//							{
+//								float cVal = (Float) animation.getAnimatedValue();
+//								//plateListView2.setAlpha(cVal);
+//								plateListView2.setScaleX(cVal);
+//								//plateListView2.setScaleY(cVal);
+//							}
+//						});
 						if (position < children.size()) {
 							childrenItem.clear();
 							childrenItem.addAll(children.get(position));
 							plateListViewAdapter.notifyDataSetChanged();
 						}
 					}
+					
 				});
 		if (tEaraPosition < children.size())
 			childrenItem.addAll(children.get(tEaraPosition));
@@ -112,6 +133,7 @@ public class ViewMiddle extends LinearLayout implements ViewBaseAction {
 		plateListViewAdapter.setTextSize(15);
 		plateListViewAdapter.setSelectedPositionNoNotify(tBlockPosition);
 		plateListView.setAdapter(plateListViewAdapter);
+		plateListView2.setAdapter(plateListViewAdapter);
 		plateListViewAdapter
 				.setOnItemClickListener(new TextAdapter.OnItemClickListener() {
 
@@ -138,6 +160,7 @@ public class ViewMiddle extends LinearLayout implements ViewBaseAction {
 	public void setDefaultSelect() {
 		regionListView.setSelection(tEaraPosition);
 		plateListView.setSelection(tBlockPosition);
+		plateListView2.setSelection(tBlockPosition);
 	}
 
 	public String getShowText() {

@@ -30,5 +30,16 @@
             android:divider="@null"
             android:background="@color/choose_eara_item_press_color" >
         </ListView>
+        <ListView
+            android:id="@+id/listView3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="@color/no_color"
+            android:paddingRight="4dp"
+            android:layout_weight="1"
+            android:divider="@null"
+            android:visibility="gone"
+            android:background="@color/choose_eara_item_press_color" >
+        </ListView>
 
 </merge>

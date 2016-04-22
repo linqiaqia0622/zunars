@@ -36,4 +36,7 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:2.4.0'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.kyleduo.switchbutton:library:1.2.9'
+    compile 'cn.bingoogolapple:bga-banner:2.0.4@aar'
+    
+    
 }

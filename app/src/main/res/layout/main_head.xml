@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.zunars.www.zunars.GuideActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="270dp"
+    tools:context="com.zunars.www.zunars.GuideActivity">
+
+
+    <cn.bingoogolapple.bgabanner.BGABanner xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/banner_splash_pager"
+        style="@style/MatchMatch"
+        app:banner_pointContainerBackground="@color/no_color"
+
+        app:banner_pointAutoPlayAble="true"
+        app:banner_pointTopBottomMargin="15dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"  
+            android:background="@color/white"
+            android:layout_margin="20dp">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" 
+                android:layout_weight="5"
+                android:text="广州"
+                android:id="@+id/area_button"
+                android:textColor="@color/text_Grey"
+                android:background="@color/white"/>
+        <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+   
+           />
+        </LinearLayout>
+    
+</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+                android:layout_weight="1"
+                android:id="@+id/all_rent">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@android:drawable/ic_menu_camera" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="整租房" 
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:textColor="@color/text_Grey"
+                android:background="@color/no_color"/>
+        </LinearLayout>
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+                android:layout_weight="1"
+                android:id="@+id/co_rent">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@android:drawable/ic_menu_camera" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="整租房" 
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:textColor="@color/text_Grey"
+                android:background="@color/no_color"/>
+        </LinearLayout>
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+                android:layout_weight="1"
+                android:id="@+id/map_rent">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@android:drawable/ic_menu_camera" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="整租房" 
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:textColor="@color/text_Grey"
+                android:background="@color/no_color"/>
+        </LinearLayout>
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+                android:layout_weight="1"
+                android:id="@+id/sell_room">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@android:drawable/ic_menu_camera" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="整租房" 
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:textColor="@color/text_Grey"
+                android:background="@color/no_color"/>
+        </LinearLayout>
+           
+           
+        </LinearLayout>
+        <View
+        android:layout_width="match_parent"
+        android:layout_height="0.4dp"
+        android:background="@color/divider"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:id="@+id/ask_rent">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@android:drawable/ic_menu_camera" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="整租房"
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:textColor="@color/text_Grey"
+                android:background="@color/no_color"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@android:drawable/ic_menu_camera" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="整租房"
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:textColor="@color/text_Grey"
+                android:background="@color/no_color"/>
+        </LinearLayout></LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

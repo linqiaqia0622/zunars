@@ -83,12 +83,13 @@ public class RoomListActivity extends AppCompatActivity implements BaseItemFragm
     ViewPager mViewPager;
     @Bind(R.id.tab_area)
     ExpandTabView tab_area;
-    @Bind(R.id.tab_price)
-    ExpandTabView tab_price;
-    @Bind(R.id.tab_type)
-    ExpandTabView tab_type;
-    @Bind(R.id.tab_choice)
-    ExpandTabView tab_choice;
+    HomeListFragment homeListFragment;
+//    @Bind(R.id.tab_price)
+//    ExpandTabView tab_price;
+//    @Bind(R.id.tab_type)
+//    ExpandTabView tab_type;
+//    @Bind(R.id.tab_choice)
+   // ExpandTabView tab_choice;
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
     @Override
@@ -100,13 +101,11 @@ public class RoomListActivity extends AppCompatActivity implements BaseItemFragm
         //设置Toolbar栏
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //  menu_area=(ExpandTabView)findViewById(R.id.menu_area); 
-        setSupportActionBar(toolbar);
-        SetupTabPresenter set=new SetuoPresenterImpl(this);
-        set.SetupTabPresenter(tab_area,null,new ArrayList<View>());
-        set.SetupTabPresenter(tab_price,null,new ArrayList<View>());
-     //   mViewArray.add(new TextView(this));
-        set.SetupTabPresenter(tab_type,null,new ArrayList<View>());
-        set.SetupTabPresenter(tab_choice,null,new ArrayList<View>());
+      
+//        set.SetupTabPresenter(tab_price,null,new ArrayList<View>());
+//     //   mViewArray.add(new TextView(this));
+//        set.SetupTabPresenter(tab_type,null,new ArrayList<View>());
+//        set.SetupTabPresenter(tab_choice,null,new ArrayList<View>());
         //异步更新房源列表
 
         AsyncFetchRoomListTask fetchRoomList = new AsyncFetchRoomListTask();
@@ -118,48 +117,52 @@ public class RoomListActivity extends AppCompatActivity implements BaseItemFragm
         //   mapView.onCreate(savedInstanceState);
         initMap();
         List<Fragment> lf = new ArrayList<>();
-        lf.add(new HomeListFragment());
+        homeListFragment=new HomeListFragment();
+        lf.add(homeListFragment);
 
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(lf, getSupportFragmentManager());
-        mViewPager.setAdapter(mSectionsPagerAdapter);
-        try {
-
-
-            ApiHttp.getRoomList(this, new Callback() {
-                @Override
-                public void onFailure(Request request, IOException e) {
-                    Log.i("miao", "  onfailure request" + request.toString());
-                    Log.i("miao", "  onfailure e" + e.toString());
-                }
-
-                @Override
-                public void onResponse(Response response) throws IOException {
-
-                    Log.i("miao", "   onResponse" + res);
-                    res = response.body().string();
-
-
-                    Gson gson = new Gson();
-                    Log.i("miao", "Gson");
-                    final RoomItemList d = RoomItemList.parse(res);
-                    Message message = Message.obtain(handler, new Runnable() {
-                        @Override
-                        public void run() {
-
-                            //  ListView mListView = (ListView) findViewById(R.id.room_list_view);
-                            //  RoomListAdapter adapter = new RoomListAdapter(RoomListActivity.this, d.getRoomList());
-                            //   mListView.setAdapter(adapter);
-                        }
-                    });
-                    message.sendToTarget();
-                    //  Log.i("miao",((RoomListItem)d.getRoomList().get(1)).getArea_name());
-
-                }
-            });
-        } catch (Exception e) {
-
-        }
+        mViewPager.setAdapter(mSectionsPagerAdapter); 
+        setSupportActionBar(toolbar);
+        SetupTabPresenter set=new SetuoPresenterImpl(this);
+        set.SetupTabPresenter(tab_area,homeListFragment,new ArrayList<View>());
+//        try {
+//
+//
+//            ApiHttp.getRoomList(this, new Callback() {
+//                @Override
+//                public void onFailure(Request request, IOException e) {
+//                    Log.i("miao", "  onfailure request" + request.toString());
+//                    Log.i("miao", "  onfailure e" + e.toString());
+//                }
+//
+//                @Override
+//                public void onResponse(Response response) throws IOException {
+//
+//                    Log.i("miao", "   onResponse" + res);
+//                    res = response.body().string();
+//
+//
+//                    Gson gson = new Gson();
+//                    Log.i("miao", "Gson");
+//                    final RoomItemList d = RoomItemList.parse(res);
+//                    Message message = Message.obtain(handler, new Runnable() {
+//                        @Override
+//                        public void run() {
+//
+//                            //  ListView mListView = (ListView) findViewById(R.id.room_list_view);
+//                            //  RoomListAdapter adapter = new RoomListAdapter(RoomListActivity.this, d.getRoomList());
+//                            //   mListView.setAdapter(adapter);
+//                        }
+//                    });
+//                    message.sendToTarget();
+//                    //  Log.i("miao",((RoomListItem)d.getRoomList().get(1)).getArea_name());
+//
+//                }
+//            });
+//        } catch (Exception e) {
+//
+//        }
         //设置返回事件
         TextView mBackBtn = (TextView) findViewById(R.id.back_btn);
         mBackBtn.setOnClickListener(new View.OnClickListener() {

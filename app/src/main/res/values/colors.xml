@@ -11,11 +11,12 @@
     <color name="text_black">#FF232723</color>
     <color name="text_Grey">#bf2b2b2b</color>
     <color name="text_light_Grey">#bf383838</color>
+    <color name="divider">#bf6c6c6c</color>
     <!-- menu，颜色值 -->
     <color name="popup_main_background">#b0000000</color>
     <color name="black">#000000</color>
     <color name="choose_eara_item_press_color">#f4f4f4</color>
-    <color name="white">#ffffff</color>
+    <color name="white">#ffffffff</color>
     <color name="no_color">#00000000</color>
 
 

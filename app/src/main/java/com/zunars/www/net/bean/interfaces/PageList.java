@@ -18,8 +18,9 @@ import java.util.List;
  */
 public interface PageList<T> {
 
-	public int getPageSize();
-	public int getCount();
-	public List<T> getList();
+ int getPageSize();
+	 int getCount();
+	 List<T> getList();
+	
 	
 }
