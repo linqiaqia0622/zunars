@@ -33,6 +33,7 @@
 
         <activity android:name=".SplashActivity" />
         <activity android:name=".GuideActivity" />
+        <activity android:name=".AboutActivity" />
         <activity
             android:name=".RoomListActivity"
             android:screenOrientation="portrait"> </activity>

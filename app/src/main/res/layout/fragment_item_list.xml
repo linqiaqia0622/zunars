@@ -9,8 +9,7 @@ android:id="@+id/fragment_swiperefreshlayout"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 app:layoutManager="LinearLayoutManager"
-tools:context="com.qiaqia.ochina.ui.BaseItemFragment"
-tools:listitem="@layout/fragment_item" >
+ >
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

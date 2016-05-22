@@ -1,5 +1,6 @@
 package com.zunars.www.zunars;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -218,6 +219,9 @@ private SectionsPagerAdapter mSectionsPagerAdapter;
 
     @Override
     public void onListFragmentInteraction(Entity item) {
-        
+        Log.i("miao","hhhh"+item.getId());
+        Intent intent=new Intent(this,AboutActivity.class);
+        intent.putExtra("room_id",item.getId()+"");
+        startActivity(intent);
     }
 }

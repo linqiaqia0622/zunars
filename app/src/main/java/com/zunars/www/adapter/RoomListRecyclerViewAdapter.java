@@ -58,6 +58,7 @@ Zunars context;
     
         RoomListItem roomitem = mValues.get(position);
         String ImageURL = roomitem.getImage();
+        Log.i("miaopicture","   Imageurl    "+ImageURL);
         if(ImageURL.endsWith("portrait.gif") || StringUtils.isEmpty(ImageURL)){
             holder.image.setImageResource(R.drawable.home);
         }else{

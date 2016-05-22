@@ -219,6 +219,7 @@ private String Sub;
        roomListItem.totalFloor = result.getJSONArray("floor").getInt(1);
            roomListItem.image = resDomain + result.getJSONObject("cover_pictures").getString("url").toString() + "!small" ; 
           Log.i("miao",roomListItem.toString());
+           roomListItem.id=roomListItem.room_id;
            return  roomListItem;
 //
    } catch(Exception e){
